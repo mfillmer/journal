@@ -1,38 +1,38 @@
 import React, { FC, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addSection } from './redux/sections'
+import { Section } from './Section.types'
+import { traverse } from './traverse'
+import { v4 } from 'uuid'
+import { useAppSelector } from './redux/store'
 
-interface Section {
-  [key: string]: Section
-}
-
-interface props {
-  sections: Section
-}
-
-const traverse = (path: string, object: Section, pathSeparator = '/') => {
-  const items = path.split(pathSeparator)
-  let result = object
-  items.forEach((item) => {
-    result = result[item] ?? result
-  })
-  return result
-}
-
-export const SectionList: FC<props> = ({ sections = {} }) => {
+export const SectionList: FC = ({}) => {
   const [path, setPath] = useState('')
-  const items = traverse(path, sections)
+  const items = useAppSelector(
+    (state) => state.sections.items?.filter((s) => s.path === path) || []
+  )
   const heading = path.split('/').pop()
+  const [value, setValue] = useState('')
+  const dispatch = useDispatch()
+  const add = () => dispatch(addSection({ name: value, path, uuid: v4() }))
   return (
     <>
       {heading && <h1>{heading}</h1>}
-      {Object.keys(items).map((key, index) => (
+      <input
+        type='text'
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+      />
+      <div onClick={add}>Bereich hinzufügen</div>
+      {items.map((item, index) => (
         <div
           onClick={() => {
-            setPath(`/${key}`)
+            setPath(`${path}/${item.name}`)
           }}
           data-testid='sectionListItem'
           key={index}
         >
-          {key}
+          {item.name}
         </div>
       ))}
     </>
