@@ -1,0 +1,12 @@
+
+vscode:
+  extensions:
+    - dsznajder.es7-react-js-snippets
+    - giantcola.advanced-new-file
+
+github:
+  prebuilds:
+    branches: true
+
+tasks:
+  - init: yarn 
