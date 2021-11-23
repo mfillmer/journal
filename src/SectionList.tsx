@@ -1,12 +1,10 @@
 import React, { FC, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addSection } from './redux/sections'
-import { Section } from './Section.types'
-import { traverse } from './traverse'
+import { useDispatch } from 'react-redux'
 import { v4 } from 'uuid'
+import { addSection } from './redux/sections'
 import { useAppSelector } from './redux/store'
 
-export const SectionList: FC = ({}) => {
+export const SectionList: FC = () => {
   const [path, setPath] = useState('')
   const items = useAppSelector(
     (state) => state.sections.items?.filter((s) => s.path === path) || []
