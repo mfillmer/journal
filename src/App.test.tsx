@@ -10,19 +10,19 @@ describe('today view', () => {
     { name: 'test', path: '', uuid: '1' },
     { name: 'test2', path: '', uuid: '2' },
     { name: 'testWithChildren', path: '', uuid: '3' },
-    { name: 'test', path: '/testWithChildren', uuid: '4' },
+    { name: 'test_child', path: '/testWithChildren', uuid: '4' },
   ]
 
   it('shows every top level section', () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items } },
+      preloadedState: { sections: { items, path: '' } },
     })
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(3)
     expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
   it('lets the user tap into sections', async () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items }, path: '' },
+      preloadedState: { sections: { items, path: '' } },
     })
     const element = screen.getByText(/testwithchildren/i)
     await act(() => userEvent.click(element))
@@ -47,12 +47,15 @@ describe('today view', () => {
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(1)
     expect(screen.getByTestId('sectionListItem')).toHaveTextContent('new item')
   })
-  it('lets the user tap out of sections', () => {
+  it('lets the user tap out of sections', async () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items }, path: '/testWithChildren' },
+      preloadedState: { sections: { items, path: '/testWithChildren' } },
     })
     const heading = screen.getByRole('heading')
     expect(heading.innerHTML).toMatch(/testWithChildren/i)
+    expect(screen.queryByText(/test_child/i)).toBeInTheDocument()
+    await act(() => userEvent.click(heading))
+    expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
   it('lets the user rate any section without children', () => {})
   it('lets the user take notes', () => {})

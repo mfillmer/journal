@@ -24,11 +24,21 @@ export const useHeading = () => {
 
 export const useItems = () => {
   const path = usePath()
-  const items = useAppSelector(
-    (state) => state.sections.items?.filter((s) => s.path === path) || []
+  const items = useAppSelector((state) =>
+    state.sections.items?.filter((s) => s.path === path)
   )
 
   return items
+}
+
+export const useGoUp = () => {
+  const path = usePath()
+  const setPath = useSetPath()
+  const goUp = () => {
+    const [_, ...newPath] = path.split('/').reverse()
+    setPath(newPath.reverse().join('/'))
+  }
+  return goUp
 }
 
 export const useAdd = (value: string) => {

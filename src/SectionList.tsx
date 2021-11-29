@@ -1,27 +1,15 @@
 import React, { FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { v4 } from 'uuid'
-import { addSection } from './redux/sections'
-import { useAppSelector } from './redux/store'
-import {
-  useAdd,
-  useHeading,
-  useItems,
-  usePath,
-  useSetPath,
-} from './Section.util'
+import { useAdd, useGoUp, useHeading } from './Section.util'
 import { SectionListItems } from './SectionListItems'
 
 export const SectionList: FC = () => {
-  const path = usePath()
-  const setPath = useSetPath()
-  const items = useItems()
   const heading = useHeading()
   const [value, setValue] = useState('')
   const add = useAdd(value)
+  const goUp = useGoUp()
   return (
     <>
-      {heading && <h1>{heading}</h1>}
+      {heading && <h1 onClick={goUp}>{heading}</h1>}
       <input
         type='text'
         value={value}
