@@ -5,15 +5,15 @@ export const SectionListItems = () => {
   const path = usePath()
   const items = useItems()
   const setPath = useSetPath()
-
+  const onClick = (name: string) => () => {
+    setPath(`${path}/${name}`)
+  }
   return (
     <>
       {items.map((item, index) => (
         <div
-          onClick={() => {
-            setPath(`${path}/${item.name}`)
-          }}
           data-testid='sectionListItem'
+          onClick={onClick(item.name)}
           key={index}
         >
           {item.name}
