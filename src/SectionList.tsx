@@ -3,19 +3,21 @@ import { useDispatch } from 'react-redux'
 import { v4 } from 'uuid'
 import { addSection } from './redux/sections'
 import { useAppSelector } from './redux/store'
-import { useSetPath } from './Section.util'
-
+import {
+  useAdd,
+  useHeading,
+  useItems,
+  usePath,
+  useSetPath,
+} from './Section.util'
 
 export const SectionList: FC = () => {
-    const dispatch = useDispatch()
-  const path = useAppSelector(state => state.sections.path)
+  const path = usePath()
   const setPath = useSetPath()
-  const items = useAppSelector(
-    (state) => state.sections.items?.filter((s) => s.path === path) || []
-  )
-  const heading = path.split('/').pop()
+  const items = useItems(path)
+  const heading = useHeading()
   const [value, setValue] = useState('')
-  const add = () => dispatch(addSection({ name: value, path, uuid: v4() }))
+  const add = useAdd(value)
   return (
     <>
       {heading && <h1>{heading}</h1>}

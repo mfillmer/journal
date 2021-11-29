@@ -22,7 +22,7 @@ describe('today view', () => {
   })
   it('lets the user tap into sections', async () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items } },
+      preloadedState: { sections: { items }, path: '' },
     })
     const element = screen.getByText(/testwithchildren/i)
     await act(() => userEvent.click(element))
