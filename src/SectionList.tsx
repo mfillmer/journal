@@ -10,11 +10,12 @@ import {
   usePath,
   useSetPath,
 } from './Section.util'
+import { SectionListItems } from './SectionListItems'
 
 export const SectionList: FC = () => {
   const path = usePath()
   const setPath = useSetPath()
-  const items = useItems(path)
+  const items = useItems()
   const heading = useHeading()
   const [value, setValue] = useState('')
   const add = useAdd(value)
@@ -27,17 +28,7 @@ export const SectionList: FC = () => {
         onChange={(e) => setValue(e.currentTarget.value)}
       />
       <div onClick={add}>Bereich hinzufügen</div>
-      {items.map((item, index) => (
-        <div
-          onClick={() => {
-            setPath(`${path}/${item.name}`)
-          }}
-          data-testid='sectionListItem'
-          key={index}
-        >
-          {item.name}
-        </div>
-      ))}
+      <SectionListItems />
     </>
   )
 }
