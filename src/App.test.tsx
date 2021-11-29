@@ -47,6 +47,13 @@ describe('today view', () => {
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(1)
     expect(screen.getByTestId('sectionListItem')).toHaveTextContent('new item')
   })
+  it('lets the user tap out of sections', () => {
+    render(<SectionList />, {
+      preloadedState: { sections: { items }, path: '/testWithChildren' },
+    })
+    const heading = screen.getByRole('heading')
+    expect(heading.innerHTML).toMatch(/testWithChildren/i)
+  })
   it('lets the user rate any section without children', () => {})
   it('lets the user take notes', () => {})
 })
