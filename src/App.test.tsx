@@ -1,12 +1,14 @@
-import React from 'react'
-import { render, screen } from './testUtils'
 import userEvent from '@testing-library/user-event'
+import React from 'react'
 import { act } from 'react-dom/test-utils'
-import { SectionList } from './SectionList'
+import { ratingReducer } from './redux/ratings'
 import { SectionItem } from './redux/sections'
-import { SectionListItems } from './SectionListItems'
+import { SectionList } from './SectionList'
+import { SectionListItem } from './SectionListItem'
+import { render, screen } from './testUtils'
 
 describe('today view', () => {
+  const item = { name: 'test', path: '', uuid: '1' }
   const items: SectionItem[] = [
     { name: 'test', path: '', uuid: '1' },
     { name: 'test2', path: '', uuid: '2' },
@@ -14,16 +16,20 @@ describe('today view', () => {
     { name: 'test_child', path: '/testWithChildren', uuid: '4' },
   ]
 
+  const preloadedState = {
+    sections: { items, path: '' },
+    ratings: {},
+  }
   it('shows every top level section', () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items, path: '' } },
+      preloadedState,
     })
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(3)
     expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
   it('lets the user tap into sections', async () => {
     render(<SectionList />, {
-      preloadedState: { sections: { items, path: '' } },
+      preloadedState,
     })
     const element = screen.getByText(/testwithchildren/i)
     await act(() => userEvent.click(element))
@@ -49,8 +55,9 @@ describe('today view', () => {
     expect(screen.getByTestId('sectionListItem')).toHaveTextContent('new item')
   })
   it('lets the user tap out of sections', async () => {
+    preloadedState.sections.path = '/testWithChildren'
     render(<SectionList />, {
-      preloadedState: { sections: { items, path: '/testWithChildren' } },
+      preloadedState,
     })
     const heading = screen.getByRole('heading')
     expect(heading.innerHTML).toMatch(/testWithChildren/i)
@@ -58,6 +65,15 @@ describe('today view', () => {
     await act(() => userEvent.click(heading))
     expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
-  it('lets the user rate any section without children', () => {})
+  it('lets the user rate any section without children', async () => {
+    render(<SectionListItem item={item} />)
+    const buttons = screen.queryAllByRole('button')
+    expect(buttons.length).toBe(4)
+    expect(buttons[1]).not.toHaveClass('border-accent')
+    await act(() => {
+      userEvent.click(buttons[1])
+    })
+    expect(buttons[1]).toHaveClass('border-accent')
+  })
   it('lets the user take notes', () => {})
 })

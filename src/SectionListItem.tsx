@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { RatingButtonList } from './RatingButtonList'
 import { SectionItem } from './redux/sections'
 import { usePath, useSetPath } from './Section.util'
 
@@ -10,7 +11,8 @@ export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   }
   return (
     <div data-testid='sectionListItem' onClick={onClick(item.name)}>
-      {item.name}
+      <div>{item.name}</div>
+      <RatingButtonList uuid={item.uuid} />
     </div>
   )
 }

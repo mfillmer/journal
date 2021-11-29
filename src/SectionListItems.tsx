@@ -1,5 +1,5 @@
 import React from 'react'
-import { useItems, usePath, useSetPath } from './Section.util'
+import { useItems } from './Section.util'
 import { SectionListItem } from './SectionListItem'
 
 export const SectionListItems = () => {

@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux'
-import { v4 } from 'uuid'
 import { addSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
 
@@ -25,7 +24,7 @@ export const useHeading = () => {
 export const useItems = (): SectionItem[] => {
   const path = usePath()
   const items = useAppSelector((state) =>
-    state.sections.items?.filter((s) => s.path === path)
+    Object.values(state.sections.items)?.filter((s) => s.path === path)
   )
 
   return items
@@ -35,7 +34,8 @@ export const useGoUp = () => {
   const path = usePath()
   const setPath = useSetPath()
   const goUp = () => {
-    const [_, ...newPath] = path.split('/').reverse()
+    const newPath = path.split('/')
+    newPath.pop()
     setPath(newPath.reverse().join('/'))
   }
   return goUp
@@ -43,7 +43,6 @@ export const useGoUp = () => {
 
 export const useAdd = (value: string) => {
   const dispatch = useDispatch()
-  const path = usePath()
-  const add = () => dispatch(addSection({ name: value, path, uuid: v4() }))
+  const add = () => dispatch(addSection(value))
   return add
 }
