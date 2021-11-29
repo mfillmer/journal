@@ -3,6 +3,8 @@ vscode:
   extensions:
     - dsznajder.es7-react-js-snippets
     - giantcola.advanced-new-file
+    - hbenl.vscode-test-explorer
+    - kavod-io.vscode-jest-test-adapter
 
 github:
   prebuilds:
