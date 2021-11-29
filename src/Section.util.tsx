@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { v4 } from 'uuid'
-import { addSection, setPath } from './redux/sections'
+import { addSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
 
 export const useSetPath = () => {
@@ -22,7 +22,7 @@ export const useHeading = () => {
   return heading
 }
 
-export const useItems = () => {
+export const useItems = (): SectionItem[] => {
   const path = usePath()
   const items = useAppSelector((state) =>
     state.sections.items?.filter((s) => s.path === path)

@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { act } from 'react-dom/test-utils'
 import { SectionList } from './SectionList'
 import { SectionItem } from './redux/sections'
+import { SectionListItems } from './SectionListItems'
 
 describe('today view', () => {
   const items: SectionItem[] = [
