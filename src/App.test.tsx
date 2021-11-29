@@ -20,12 +20,12 @@ describe('today view', () => {
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(3)
     expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
-  it('lets the user tap into sections', () => {
+  it('lets the user tap into sections', async () => {
     render(<SectionList />, {
       preloadedState: { sections: { items } },
     })
     const element = screen.getByText(/testwithchildren/i)
-    act(() => userEvent.click(element))
+    await act(() => userEvent.click(element))
     const child = screen.getByTestId('sectionListItem')
     const heading = screen.getByRole('heading')
     expect(child).toHaveTextContent('test')

@@ -20,8 +20,11 @@ const sectionSlice = createSlice({
     addSection: (state, action: PayloadAction<SectionItem>) => {
       state.items.push(action.payload)
     },
+    setPath: (state, action:PayloadAction<string>) => {
+        state.path = action.payload
+    }
   },
 })
 
 export const sectionReducer = sectionSlice.reducer
-export const { addSection } = sectionSlice.actions
+export const { addSection, setPath } = sectionSlice.actions
