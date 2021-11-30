@@ -1,4 +1,3 @@
-import { TextareaAutosize } from '@mui/base'
 import { TextField } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
@@ -13,6 +12,10 @@ export const Note = () => {
   const setContent = (content: string) => dispatch(setNote({ date, content }))
   return (
     <TextField
+      sx={{
+        width: '100%',
+        marginY: 8,
+      }}
       label='Notiz'
       multiline={true}
       value={content}

@@ -1,8 +1,9 @@
+import { Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import React, { FC } from 'react'
-import { SectionRatingInput } from './SectionRatingInput'
 import { SectionItem } from './redux/sections'
 import { usePath, useSetPath } from './Section.util'
-import { Stack, Typography } from '@mui/material'
+import { SectionRatingInput } from './SectionRatingInput'
 
 export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const path = usePath()
@@ -11,14 +12,23 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
     setPath(`${path}/${name}`)
   }
   return (
-    <Stack
-      direction='row'
-      spacing='2'
-      data-testid='sectionListItem'
-      onClick={onClick(item.name)}
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginY: 1,
+        width: '100%',
+      }}
     >
-      <Typography variant='h2'>{item.name}</Typography>
+      <Typography
+        sx={{ marginRight: 2 }}
+        onClick={onClick(item.name)}
+        variant='h4'
+      >
+        {item.name}
+      </Typography>
       <SectionRatingInput uuid={item.uuid} />
-    </Stack>
+    </Box>
   )
 }

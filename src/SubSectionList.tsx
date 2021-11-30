@@ -7,10 +7,10 @@ export const SubSectionList = () => {
   const items = useItems()
 
   return (
-    <Stack spacing='2'>
+    <>
       {items.map((item, index) => (
         <SubSectionListItem key={index} item={item} />
       ))}
-    </Stack>
+    </>
   )
 }

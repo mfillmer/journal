@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, Chip, TextField } from '@mui/material'
+import { Box } from '@mui/system'
 import React, { FC } from 'react'
 import { useSectionRating } from './Rating.utils'
 
@@ -11,13 +12,22 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
   const { comment, rating, setRating, setComment } = useSectionRating(uuid)
 
   return (
-    <div onClick={(e) => e.stopPropagation()}>
-      {!!rating && <Chip onClick={() => setRating('')} label={rating} />}
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        '>*': { marginRight: 2 },
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {rating !== undefined && (
+        <Chip onClick={() => setRating('')} label={rating} />
+      )}
       <ButtonGroup
         variant='outlined'
         aria-label='outlined primary button group'
       >
-        {!rating &&
+        {rating === undefined &&
           items.map((_, index) => (
             <Button
               variant='outlined'
@@ -36,6 +46,6 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
           onChange={(e) => setComment(e.currentTarget.value)}
         />
       )}
-    </div>
+    </Box>
   )
 }

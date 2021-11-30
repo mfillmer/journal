@@ -6,9 +6,9 @@ import { SubSectionList } from './SubSectionList'
 export const SectionView: FC = () => {
   return (
     <>
+      <AddSectionInput />
       <SectionHeader />
       <SubSectionList />
-      <AddSectionInput />
     </>
   )
 }

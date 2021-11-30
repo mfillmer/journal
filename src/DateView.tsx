@@ -5,9 +5,13 @@ import { useDate } from './DateView.utils'
 export const DateView = () => {
   const { dateString, goBack, goForward } = useDate()
   return (
-    <ButtonGroup variant='outlined' aria-label='outlined primary button group'>
+    <ButtonGroup
+      style={{ display: 'flex', width: ' 100%' }}
+      variant='outlined'
+      aria-label='outlined primary button group'
+    >
       <Button onClick={goBack}>&lt;</Button>
-      <Button>{dateString}</Button>
+      <Button style={{ flex: 1 }}>{dateString}</Button>
       <Button onClick={goForward}>&gt;</Button>
     </ButtonGroup>
   )
