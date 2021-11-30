@@ -1,14 +1,14 @@
 import React from 'react'
 import { useItems } from './Section.util'
-import { SectionListItem } from './SectionListItem'
+import { SubSectionListItem } from './SubSectionListItem'
 
-export const SectionListItems = () => {
+export const SubSectionList = () => {
   const items = useItems()
 
   return (
     <>
       {items.map((item, index) => (
-        <SectionListItem key={index} item={item} />
+        <SubSectionListItem key={index} item={item} />
       ))}
     </>
   )

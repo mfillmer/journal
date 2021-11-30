@@ -3,8 +3,8 @@ import React from 'react'
 import { act } from 'react-dom/test-utils'
 import { ratingReducer } from './redux/ratings'
 import { SectionItem } from './redux/sections'
-import { SectionList } from './SectionList'
-import { SectionListItem } from './SectionListItem'
+import { SectionView } from './SectionView'
+import { SubSectionListItem } from './SubSectionListItem'
 import { render, screen } from './testUtils'
 
 describe('today view', () => {
@@ -21,14 +21,14 @@ describe('today view', () => {
     ratings: {},
   }
   it('shows every top level section', () => {
-    render(<SectionList />, {
+    render(<SectionView />, {
       preloadedState,
     })
     expect(screen.queryAllByTestId('sectionListItem').length).toBe(3)
     expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
   it('lets the user tap into sections', async () => {
-    render(<SectionList />, {
+    render(<SectionView />, {
       preloadedState,
     })
     const element = screen.getByText(/testwithchildren/i)
@@ -39,7 +39,7 @@ describe('today view', () => {
     expect(heading.innerHTML).toMatch(/testWithChildren/)
   })
   it('lets the user add sections', async () => {
-    render(<SectionList />)
+    render(<SectionView />)
     const addButton = screen.getByText(/bereich hinzufügen/i)
     const newSectionText = screen.getByRole('textbox')
     expect(addButton).toBeVisible()
@@ -56,7 +56,7 @@ describe('today view', () => {
   })
   it('lets the user tap out of sections', async () => {
     preloadedState.sections.path = '/testWithChildren'
-    render(<SectionList />, {
+    render(<SectionView />, {
       preloadedState,
     })
     const heading = screen.getByRole('heading')
@@ -66,7 +66,7 @@ describe('today view', () => {
     expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
   it('lets the user rate any section without children', async () => {
-    render(<SectionListItem item={item} />)
+    render(<SubSectionListItem item={item} />)
     const buttons = screen.queryAllByRole('button')
     expect(buttons.length).toBe(4)
     expect(buttons[1]).not.toHaveClass('border-accent')

@@ -1,11 +1,13 @@
 import React from 'react'
 import './App.css'
 import { DateView } from './DateView'
-import { SectionList } from './SectionList'
+import { SectionView } from './SectionView'
 
-const App = () => <div>
-    <DateView  />
-    <SectionList />
-</div>
+const App = () => (
+  <div>
+    <DateView />
+    <SectionView />
+  </div>
+)
 
 export default App
