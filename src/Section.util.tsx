@@ -43,6 +43,7 @@ export const useGoUp = () => {
 
 export const useAdd = (value: string) => {
   const dispatch = useDispatch()
-  const add = () => dispatch(addSection(value))
+
+  const add = () => value && dispatch(addSection(value))
   return add
 }

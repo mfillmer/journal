@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { SectionRatingInput } from './SectionRatingInput'
 import { SectionItem } from './redux/sections'
 import { usePath, useSetPath } from './Section.util'
+import { Stack, Typography } from '@mui/material'
 
 export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const path = usePath()
@@ -10,9 +11,14 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
     setPath(`${path}/${name}`)
   }
   return (
-    <div data-testid='sectionListItem' onClick={onClick(item.name)}>
-      <div>{item.name}</div>
+    <Stack
+      direction='row'
+      spacing='2'
+      data-testid='sectionListItem'
+      onClick={onClick(item.name)}
+    >
+      <Typography variant='h2'>{item.name}</Typography>
       <SectionRatingInput uuid={item.uuid} />
-    </div>
+    </Stack>
   )
 }

@@ -7,8 +7,8 @@ export const SectionView: FC = () => {
   return (
     <>
       <SectionHeader />
-      <AddSectionInput />
       <SubSectionList />
+      <AddSectionInput />
     </>
   )
 }
