@@ -1,13 +1,13 @@
 import React from 'react'
-import { useCurrentDate } from './DateView.utils'
+import { useDate } from './DateView.utils'
 
 export const DateView = () => {
-  const { date, goBack, goForward } = useCurrentDate()
+  const { date, goBack, goForward } = useDate()
   return (
     <div>
-      <button onClick={goBack}>&gt;</button>
-      <div>{date}</div>
-      <button>&lt;</button>
+      <button onClick={goBack}>&lt;</button>
+      <div>{date.toLocaleDateString()}</div>
+      <button onClick={goForward}>&gt;</button>
     </div>
   )
 }
