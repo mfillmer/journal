@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { RatingButtonList } from './RatingButtonList'
+import { SectionRatingInput } from './SectionRatingInput'
 import { SectionItem } from './redux/sections'
 import { usePath, useSetPath } from './Section.util'
 
@@ -12,7 +12,7 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   return (
     <div data-testid='sectionListItem' onClick={onClick(item.name)}>
       <div>{item.name}</div>
-      <RatingButtonList uuid={item.uuid} />
+      <SectionRatingInput uuid={item.uuid} />
     </div>
   )
 }

@@ -7,7 +7,7 @@ export const useDate = () => {
   const timestamp = useAppSelector((state) => state.date)
 
   return {
-    date: new Date(timestamp),
+    dateString: new Date(timestamp).toLocaleDateString(),
     goBack: () => dispatch(goBack()),
     goForward: () => dispatch(goForward()),
   }

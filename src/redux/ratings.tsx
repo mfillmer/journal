@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { v4 } from 'uuid'
+import { getRatingId } from './getRatingId'
 
 interface Rating {
-  uuid?: string
   date: string
   value: number
-  sectionUuid: string
+  comment: string
+  section: string
 }
 
 const initialState = {} as { [key: string]: Rating }
@@ -15,8 +15,9 @@ const ratingSlice = createSlice({
   initialState,
   reducers: {
     setRating: (state, action: PayloadAction<Rating>) => {
-      const uuid = v4()
-      state[uuid] = { ...action.payload, uuid }
+      const { date, section } = action.payload
+      const id = getRatingId(date, section)
+      state[id] = { ...action.payload }
     },
   },
 })
