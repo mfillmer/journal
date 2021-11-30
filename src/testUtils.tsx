@@ -3,6 +3,7 @@ import { render as rtlRender } from '@testing-library/react'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { sectionReducer } from './redux/sections'
+import { ratingReducer } from './redux/ratings'
 
 const render = (
   //@ts-ignore
@@ -12,7 +13,7 @@ const render = (
     preloadedState = {},
     route = '/',
     store = configureStore({
-      reducer: { sections: sectionReducer },
+      reducer: { sections: sectionReducer, ratings: ratingReducer },
       preloadedState,
     }),
     ...renderOptions

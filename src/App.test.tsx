@@ -32,7 +32,7 @@ describe('today view', () => {
       preloadedState,
     })
     const element = screen.getByText(/testwithchildren/i)
-    await act(() => userEvent.click(element))
+    await act(async () => userEvent.click(element))
     const child = screen.getByTestId('sectionListItem')
     const heading = screen.getByRole('heading')
     expect(child).toHaveTextContent('test')
@@ -62,7 +62,7 @@ describe('today view', () => {
     const heading = screen.getByRole('heading')
     expect(heading.innerHTML).toMatch(/testWithChildren/i)
     expect(screen.queryByText(/test_child/i)).toBeInTheDocument()
-    await act(() => userEvent.click(heading))
+    await act(async () => userEvent.click(heading))
     expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
   it('lets the user rate any section without children', async () => {
@@ -70,7 +70,7 @@ describe('today view', () => {
     const buttons = screen.queryAllByRole('button')
     expect(buttons.length).toBe(4)
     expect(buttons[1]).not.toHaveClass('border-accent')
-    await act(() => {
+    await act(async () => {
       userEvent.click(buttons[1])
     })
     expect(buttons[1]).toHaveClass('border-accent')

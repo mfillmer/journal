@@ -10,7 +10,7 @@ interface props {
 export const RatingButtonList: FC<props> = ({ uuid }) => {
   const items = Array(4).fill(0)
   const dispatch = useDispatch()
-  const onClick = (value: number) => () =>
+  const onClick = (value: number) =>
     dispatch(setRating({ date: '', sectionUuid: uuid, value }))
   const rating = useAppSelector(
     (state) =>
@@ -21,7 +21,10 @@ export const RatingButtonList: FC<props> = ({ uuid }) => {
       {items.map((_, index) => (
         <button
           className={`${rating === index && 'border-accent'}`}
-          onClick={onClick(index)}
+          onClick={(e) => {
+            e.preventDefault()
+            onClick(index)
+          }}
           key={index}
         >
           {index}
