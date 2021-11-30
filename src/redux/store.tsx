@@ -6,6 +6,19 @@ import { noteReducer } from './note'
 import { ratingReducer } from './ratings'
 import { sectionReducer } from './sections'
 
+const getPersistedState = () => {
+  try {
+    const raw = localStorage.getItem('state') || ''
+    return JSON.parse(raw)
+  } catch {
+    return undefined
+  }
+}
+
+const persistState = (state = {}) => {
+  localStorage.setItem('state', JSON.stringify(state))
+}
+
 export const store = configureStore({
   reducer: {
     sections: sectionReducer,
@@ -13,7 +26,12 @@ export const store = configureStore({
     date: dateReducer,
     note: noteReducer,
   },
+  preloadedState: getPersistedState(),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+})
+
+store.subscribe(() => {
+  persistState(store.getState())
 })
 
 export type RootState = ReturnType<typeof store.getState>

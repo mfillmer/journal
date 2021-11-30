@@ -1,4 +1,3 @@
-import { Stack } from '@mui/material'
 import React from 'react'
 import { useItems } from './Section.util'
 import { SubSectionListItem } from './SubSectionListItem'
