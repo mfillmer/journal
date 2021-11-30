@@ -8,6 +8,7 @@ import { SectionView } from './SectionView'
 const App = () => (
   <Box
     sx={{
+      padding: 1,
       marginTop: 2,
       marginX: 'auto',
       maxWidth: 600,

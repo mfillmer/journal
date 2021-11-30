@@ -29,7 +29,7 @@ export const AddSectionInput = () => {
         onChange={(e) => setValue(e.currentTarget.value)}
       />
       <Button variant='outlined' onClick={onSubmit}>
-        Bereich hinzufügen
+        hinzufügen
       </Button>
     </Box>
   )
