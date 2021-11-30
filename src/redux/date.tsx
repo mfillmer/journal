@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const dateSlice = createSlice({
   name: 'date',
-  initialState: '',
+  initialState: (new Date()).toString(),
   reducers: {
     setDate: (state, action: PayloadAction<string>) => {
       state = action.payload
