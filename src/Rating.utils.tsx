@@ -13,7 +13,7 @@ export const useSectionRating = (section: string) => {
     (state) => state.ratings[id] || { section, date }
   )
   const { comment = '', value } = rating
-  const setField = (field: string) => (value: string | number) => {
+  const setField = (field: string) => (value: string | number | undefined) => {
     dispatch(setRating({ ...rating, [field]: value }))
   }
 

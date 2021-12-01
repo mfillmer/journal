@@ -26,7 +26,7 @@ export const store = configureStore({
     date: dateReducer,
     note: noteReducer,
   },
-  preloadedState: getPersistedState(),
+  preloadedState: { ...getPersistedState(), date: Date.now() },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 })
 

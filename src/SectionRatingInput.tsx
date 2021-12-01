@@ -21,7 +21,7 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
       onClick={(e) => e.stopPropagation()}
     >
       {rating !== undefined && (
-        <Chip onClick={() => setRating('')} label={rating} />
+        <Chip onClick={() => setRating(undefined)} label={rating} />
       )}
       <ButtonGroup
         variant='outlined'
@@ -38,7 +38,7 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
             </Button>
           ))}
       </ButtonGroup>
-      {rating >= 0 && (
+      {rating !== undefined && (
         <TextField
           variant='outlined'
           size='small'
