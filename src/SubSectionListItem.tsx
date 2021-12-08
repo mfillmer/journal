@@ -1,3 +1,4 @@
+import { ArrowForwardIos, Edit } from '@mui/icons-material'
 import { IconButton, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
@@ -13,12 +14,12 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
     hasChildren ?  setPath(`${path}/${item.name}`): setItem(item)
   }
   return (
-    <Box sx={{display:'flex', alignItems: 'center'}}> 
-        <Typography noWrap onClick={onClick} variant='h2' sx={{flex: 1}}>
+    <Box sx={{display:'flex', alignItems: 'center', marginY: 1}}  onClick={onClick} > 
+        <Typography noWrap variant='h2' sx={{flex: 1}}>
           {item.name}
         </Typography>
         <IconButton >
-            test
+           {hasChildren ? <ArrowForwardIos/> : <Edit />}
         </IconButton>
     </Box>
   )
