@@ -4,7 +4,7 @@ import { act } from 'react-dom/test-utils'
 import { ratingReducer } from './redux/ratings'
 import { SectionItem } from './redux/sections'
 import { SectionView } from './SectionView'
-import { SubSectionListItem } from './SubSectionListItem'
+import { SectionListItem } from './SectionListItem'
 import { render, screen } from './testUtils'
 
 describe('today view', () => {
@@ -66,7 +66,7 @@ describe('today view', () => {
     expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
   it('lets the user rate any section without children', async () => {
-    render(<SubSectionListItem item={item} />)
+    render(<SectionListItem item={item} />)
     const buttons = screen.queryAllByRole('button')
     expect(buttons.length).toBe(4)
     expect(buttons[1]).not.toHaveClass('border-accent')

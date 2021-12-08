@@ -5,7 +5,7 @@ import React, { FC } from 'react'
 import { SectionItem } from './redux/sections'
 import { useHasChildren, usePath, useSetItem, useSetPath } from './Section.util'
 
-export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
+export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const path = usePath()
   const setPath = useSetPath()
   const setItem = useSetItem()
