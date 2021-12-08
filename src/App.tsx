@@ -12,10 +12,10 @@ const App = () => (
   <Container maxWidth='sm' sx={{ padding: 2 }}>
     <DateView />
     <SectionHeader />
+    <AddSectionInput />
     <SubSectionList />
     <SectionRating />
     <Note />
-    <AddSectionInput />
   </Container>
 )
 

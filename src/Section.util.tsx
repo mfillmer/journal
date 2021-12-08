@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { addSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
+import { setItem } from './redux/ui'
 
 export const useSetPath = () => {
   const dispatch = useDispatch()
@@ -8,6 +9,11 @@ export const useSetPath = () => {
     dispatch(setPath(val))
   }
   return fn
+}
+
+export const useSetItem = () => {
+  const dispatch = useDispatch()
+  return (item: SectionItem | undefined) => dispatch(setItem(item))
 }
 
 export const usePath = () => {
@@ -26,17 +32,19 @@ export const useItems = (): SectionItem[] => {
   const items = useAppSelector((state) =>
     Object.values(state.sections.items)?.filter((s) => s.path === path)
   )
-
   return items
 }
 
-export const useCurrentItem = (): SectionItem | undefined => {
-  const path = usePath().split('/')
-  const heading = path.pop()
-  const item = useAppSelector((state) => Object.values(state.sections.items))
-    .filter((s) => s.path === path.join('/'))
-    .find((s) => s.name === heading)
+export const useHasChildren = (section: SectionItem): boolean => {
+  const path = section.path
+  const items = useAppSelector((state) =>
+    Object.values(state.sections.items).filter((s) => s.path === path)
+  )
+  return !!items.length
+}
 
+export const useCurrentItem = (): SectionItem | undefined => {
+  const item = useAppSelector((state) => state.ui.currentItem)
   return item
 }
 

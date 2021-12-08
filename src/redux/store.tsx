@@ -5,6 +5,7 @@ import { dateReducer } from './date'
 import { noteReducer } from './note'
 import { ratingReducer } from './ratings'
 import { sectionReducer } from './sections'
+import { uiReducer } from './ui'
 
 const getPersistedState = () => {
   try {
@@ -25,6 +26,7 @@ export const store = configureStore({
     ratings: ratingReducer,
     date: dateReducer,
     note: noteReducer,
+    ui: uiReducer,
   },
   preloadedState: { ...getPersistedState(), date: Date.now() },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
