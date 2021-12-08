@@ -6,14 +6,14 @@ import { DateView } from './DateView'
 import { Note } from './Note'
 import { SectionHeader } from './SectionHeader'
 import { SectionRating } from './SectionRating'
-import { SubSectionList } from './SubSectionList'
+import { SectionList } from './SectionList'
 
 const App = () => (
   <Container maxWidth='sm' sx={{ padding: 2 }}>
     <DateView />
     <SectionHeader />
     <AddSectionInput />
-    <SubSectionList />
+    <SectionList />
     <SectionRating />
     <Note />
   </Container>
