@@ -36,7 +36,7 @@ export const useItems = (): SectionItem[] => {
 }
 
 export const useHasChildren = (section: SectionItem): boolean => {
-  const path = section.path
+  const path = `${section.path}/${section.name}`
   const items = useAppSelector((state) =>
     Object.values(state.sections.items).filter((s) => s.path === path)
   )
