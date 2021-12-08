@@ -1,6 +1,5 @@
 import { Drawer, Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { SectionItem } from './redux/sections'
 import { useCurrentItem, useSetItem } from './Section.util'
 import { SectionCommentInput } from './SectionCommentInput'
 import { SectionRatingInput } from './SectionRatingInput'
