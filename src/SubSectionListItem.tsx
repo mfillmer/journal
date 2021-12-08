@@ -2,7 +2,6 @@ import { Typography } from '@mui/material'
 import React, { FC } from 'react'
 import { SectionItem } from './redux/sections'
 import { usePath, useSetPath } from './Section.util'
-import { SectionRatingInput } from './SectionRatingInput'
 
 export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const path = usePath()
@@ -15,7 +14,6 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
       <Typography noWrap onClick={onClick} variant='subtitle1'>
         {item.name}
       </Typography>
-      <SectionRatingInput uuid={item.uuid} />
     </>
   )
 }

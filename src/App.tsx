@@ -5,6 +5,7 @@ import './App.css'
 import { DateView } from './DateView'
 import { Note } from './Note'
 import { SectionHeader } from './SectionHeader'
+import { SectionRating } from './SectionRating'
 import { SubSectionList } from './SubSectionList'
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
     <DateView />
     <SectionHeader />
     <SubSectionList />
+    <SectionRating />
     <Note />
     <AddSectionInput />
   </Container>

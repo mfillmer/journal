@@ -30,6 +30,16 @@ export const useItems = (): SectionItem[] => {
   return items
 }
 
+export const useCurrentItem = (): SectionItem | undefined => {
+  const path = usePath().split('/')
+  const heading = path.pop()
+  const item = useAppSelector((state) => Object.values(state.sections.items))
+    .filter((s) => s.path === path.join('/'))
+    .find((s) => s.name === heading)
+
+  return item
+}
+
 export const useGoUp = () => {
   const path = usePath()
   const setPath = useSetPath()

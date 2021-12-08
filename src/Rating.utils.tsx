@@ -12,15 +12,27 @@ export const useSectionRating = (section: string) => {
   const rating = useAppSelector(
     (state) => state.ratings[id] || { section, date }
   )
-  const { comment = '', value } = rating
-  const setField = (field: string) => (value: string | number | undefined) => {
-    dispatch(setRating({ ...rating, [field]: value }))
-  }
 
   return {
-    comment,
-    setComment: setField('comment'),
-    rating: value,
-    setRating: setField('value'),
+    rating: rating.value,
+    setRating: (value: any) => {
+      dispatch(setRating({ ...rating, value }))
+    },
+  }
+}
+
+export const useSectionComment = (section: string) => {
+  const dispatch = useDispatch()
+  const { dateString: date } = useDate()
+  const id = getRatingId(date, section)
+  const rating = useAppSelector(
+    (state) => state.ratings[id] || { section, date }
+  )
+
+  return {
+    comment: rating.comment,
+    setComment: (comment: string) => {
+      dispatch(setRating({ ...rating, comment }))
+    },
   }
 }

@@ -9,7 +9,7 @@ interface props {
 
 export const SectionRatingInput: FC<props> = ({ uuid }) => {
   const items = Array(4).fill(0)
-  const { comment, rating, setRating, setComment } = useSectionRating(uuid)
+  const { rating, setRating } = useSectionRating(uuid)
 
   return (
     <Box
@@ -23,10 +23,7 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
       {rating !== undefined && (
         <Chip onClick={() => setRating(undefined)} label={rating} />
       )}
-      <ButtonGroup
-        variant='outlined'
-        aria-label='outlined primary button group'
-      >
+      <ButtonGroup variant='outlined'>
         {rating === undefined &&
           items.map((_, index) => (
             <Button
@@ -38,14 +35,6 @@ export const SectionRatingInput: FC<props> = ({ uuid }) => {
             </Button>
           ))}
       </ButtonGroup>
-      {rating !== undefined && (
-        <TextField
-          variant='outlined'
-          size='small'
-          value={comment}
-          onChange={(e) => setComment(e.currentTarget.value)}
-        />
-      )}
     </Box>
   )
 }
