@@ -4,6 +4,7 @@ import './App.css'
 import { DateView } from './DateView'
 import { Note } from './Note'
 import { SectionView } from './SectionView'
+import '@material-tailwind/react/tailwind.css'
 
 const App = () => (
   <Box

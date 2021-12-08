@@ -6,7 +6,7 @@ export const DateView = () => {
   const { dateString, goBack, goForward } = useDate()
   return (
     <ButtonGroup
-      style={{ display: 'flex', width: ' 100%' }}
+      className='flex w-full'
       variant='outlined'
       aria-label='outlined primary button group'
     >
