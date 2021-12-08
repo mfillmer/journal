@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import React, { FC } from 'react'
 import { SectionItem } from './redux/sections'
 import { useHasChildren, usePath, useSetItem, useSetPath } from './Section.util'
@@ -9,11 +10,16 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const setItem = useSetItem()
   const hasChildren = useHasChildren(item)
   const onClick = () => {
-    hasChildren ? setItem(item) : setPath(`${path}/${item.name}`)
+    hasChildren ?  setPath(`${path}/${item.name}`): setItem(item)
   }
   return (
-    <Typography noWrap onClick={onClick} variant='subtitle1'>
-      {item.name} {hasChildren.toString()}
-    </Typography>
+    <Box sx={{display:'flex', alignItems: 'center'}}> 
+        <Typography noWrap onClick={onClick} variant='h2' sx={{flex: 1}}>
+          {item.name}
+        </Typography>
+        <IconButton >
+            test
+        </IconButton>
+    </Box>
   )
 }
