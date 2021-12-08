@@ -1,36 +1,22 @@
-import { Button, TextField, Box } from '@mui/material'
+import { Edit } from '@mui/icons-material'
+import { Fab, SxProps } from '@mui/material'
 import React, { useState } from 'react'
-import { useAdd } from './Section.util'
+import { SectionEditor } from './SectionEditor'
 
+const fabStyle: SxProps = {
+    position: 'fixed',
+    bottom: 16,
+    right: 16,
+}
 export const AddSection = () => {
-    const [value, setValue] = useState('')
-    const add = useAdd(value)
-    const reset = () => setValue('')
-    const onSubmit = () => {
-        add()
-        reset()
-    }
+    const [open, setOpen] = useState(false)
+
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                marginY: 2,
-                width: '100%',
-            }}
-        >
-            <TextField
-                label='neuer Bereich'
-                variant='outlined'
-                type='text'
-                sx={{ marginRight: 2 }}
-                size='small'
-                value={value}
-                onChange={(e) => setValue(e.currentTarget.value)}
-            />
-            <Button variant='outlined' onClick={onSubmit}>
-                hinzufügen
-            </Button>
-        </Box>
+        <div>
+            <Fab sx={fabStyle} onClick={() => setOpen(!open)}>
+                <Edit />
+            </Fab>
+            <SectionEditor open={open} setOpen={setOpen} />
+        </div>
     )
 }
