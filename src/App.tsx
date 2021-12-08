@@ -1,26 +1,20 @@
-import { Box } from '@mui/system'
+import { Container } from '@mui/material'
 import React from 'react'
+import { AddSectionInput } from './AddSectionInput'
 import './App.css'
 import { DateView } from './DateView'
 import { Note } from './Note'
-import { SectionView } from './SectionView'
+import { SectionHeader } from './SectionHeader'
+import { SubSectionList } from './SubSectionList'
 
 const App = () => (
-  <Box
-    sx={{
-      padding: 1,
-      marginTop: 2,
-      marginX: 'auto',
-      maxWidth: 600,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    }}
-  >
+  <Container maxWidth='sm' sx={{ padding: 2 }}>
     <DateView />
-    <SectionView />
+    <SectionHeader />
+    <SubSectionList />
     <Note />
-  </Box>
+    <AddSectionInput />
+  </Container>
 )
 
 export default App

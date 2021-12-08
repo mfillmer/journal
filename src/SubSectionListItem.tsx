@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
 import { SectionItem } from './redux/sections'
@@ -12,23 +12,11 @@ export const SubSectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
     setPath(`${path}/${name}`)
   }
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        marginY: 1,
-        width: '100%',
-      }}
-    >
-      <Typography
-        sx={{ marginRight: 2 }}
-        onClick={onClick(item.name)}
-        variant='h4'
-      >
+    <Stack>
+      <Typography noWrap onClick={onClick(item.name)} variant='subtitle1'>
         {item.name}
       </Typography>
       <SectionRatingInput uuid={item.uuid} />
-    </Box>
+    </Stack>
   )
 }
