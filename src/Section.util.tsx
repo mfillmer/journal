@@ -59,11 +59,15 @@ export const useGoUp = () => {
   return goUp
 }
 
-export const useSubmitSection = () => {
+export const useSubmitSection = (
+  label?: string,
+  uuid?: string,
+  isChild: boolean = false
+) => {
   const dispatch = useDispatch()
 
-  const submit = (label: string, uuid?: string) => {
-    dispatch(upsertSection({ label, uuid }))
+  const submit = () => {
+    if (!!label) dispatch(upsertSection({ label, uuid, isChild }))
   }
   return submit
 }

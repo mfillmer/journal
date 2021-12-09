@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material'
+import { ArrowBackIos } from '@mui/icons-material'
+import { IconButton, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useGoUp, useHeading } from './Section.util'
 
@@ -8,8 +9,11 @@ export const SectionHeader = () => {
 
   if (!heading) return null
   return (
-    <Typography variant='h1' onClick={goUp}>
-      {heading}
-    </Typography>
+    <Stack spacing={2} direction='row' onClick={goUp}>
+      <IconButton>
+        <ArrowBackIos />
+      </IconButton>
+      <Typography variant='h1'>{heading}</Typography>
+    </Stack>
   )
 }

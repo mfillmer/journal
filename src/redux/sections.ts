@@ -20,12 +20,19 @@ const sectionSlice = createSlice({
   reducers: {
     upsertSection: (
       state,
-      action: PayloadAction<{ label: string; uuid?: string }>
+      action: PayloadAction<{ label: string; uuid?: string; isChild: boolean }>
     ) => {
-      console.log(action.payload)
-      const path = state.path
-      const uuid = action.payload.uuid || v4()
-      state.items[uuid] = { path, uuid, label: action.payload.label }
+      if (action.payload.uuid && action.payload.isChild) {
+        const item = state.items[action.payload.uuid]
+        const path = [item.path, item.label].join('/')
+        const label = action.payload.label
+        const uuid = v4()
+        state.items[uuid] = { path, uuid, label }
+      } else {
+        const path = state.path
+        const uuid = action.payload.uuid || v4()
+        state.items[uuid] = { path, uuid, label: action.payload.label }
+      }
     },
     setPath: (state, action: PayloadAction<string>) => {
       state.path = action.payload
