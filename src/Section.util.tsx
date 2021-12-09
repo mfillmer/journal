@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { addSection, SectionItem, setPath } from './redux/sections'
+import { upsertSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
 import { setItem } from './redux/ui'
 
@@ -36,7 +36,7 @@ export const useItems = (): SectionItem[] => {
 }
 
 export const useHasChildren = (section: SectionItem): boolean => {
-  const path = `${section.path}/${section.name}`
+  const path = `${section.path}/${section.label}`
   const items = useAppSelector((state) =>
     Object.values(state.sections.items).filter((s) => s.path === path)
   )
@@ -59,9 +59,11 @@ export const useGoUp = () => {
   return goUp
 }
 
-export const useAdd = (value: string) => {
+export const useSubmitSection = () => {
   const dispatch = useDispatch()
 
-  const add = () => value && dispatch(addSection(value))
-  return add
+  const submit = (label: string, uuid?: string) => {
+    dispatch(upsertSection({ label, uuid }))
+  }
+  return submit
 }

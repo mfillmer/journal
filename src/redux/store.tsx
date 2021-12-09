@@ -10,6 +10,7 @@ import { uiReducer } from './ui'
 const getPersistedState = () => {
   try {
     const raw = localStorage.getItem('state') || ''
+    return undefined
     return JSON.parse(raw)
   } catch {
     return undefined

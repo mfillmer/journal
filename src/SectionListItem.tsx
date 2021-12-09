@@ -11,16 +11,16 @@ export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const setItem = useSetItem()
   const hasChildren = useHasChildren(item)
   const onClick = () => {
-    hasChildren ?  setPath(`${path}/${item.name}`): setItem(item)
+    hasChildren ? setPath(`${path}/${item.label}`) : setItem(item)
   }
   return (
-    <Box sx={{display:'flex', alignItems: 'center', marginY: 1}}  onClick={onClick} > 
-        <Typography noWrap variant='h2' sx={{flex: 1}}>
-          {item.name}
-        </Typography>
-        <IconButton >
-           {hasChildren ? <ArrowForwardIos/> : <Edit />}
-        </IconButton>
+    <Box
+      sx={{ display: 'flex', alignItems: 'center', marginY: 1 }}
+      onClick={onClick}>
+      <Typography noWrap variant='h2' sx={{ flex: 1 }}>
+        {item.label}
+      </Typography>
+      <IconButton>{hasChildren ? <ArrowForwardIos /> : <Edit />}</IconButton>
     </Box>
   )
 }

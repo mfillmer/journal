@@ -10,10 +10,10 @@ import { render, screen } from './testUtils'
 describe('today view', () => {
   const item = { name: 'test', path: '', uuid: '1' }
   const items: SectionItem[] = [
-    { name: 'test', path: '', uuid: '1' },
-    { name: 'test2', path: '', uuid: '2' },
-    { name: 'testWithChildren', path: '', uuid: '3' },
-    { name: 'test_child', path: '/testWithChildren', uuid: '4' },
+    { label: 'test', path: '', uuid: '1' },
+    { label: 'test2', path: '', uuid: '2' },
+    { label: 'testWithChildren', path: '', uuid: '3' },
+    { label: 'test_child', path: '/testWithChildren', uuid: '4' },
   ]
 
   const preloadedState = {
