@@ -4,16 +4,16 @@ import { act } from 'react-dom/test-utils'
 import { ratingReducer } from './redux/ratings'
 import { SectionItem } from './redux/sections'
 import { SectionView } from './SectionView'
-import { SubSectionListItem } from './SubSectionListItem'
+import { SectionListItem } from './SectionListItem'
 import { render, screen } from './testUtils'
 
 describe('today view', () => {
   const item = { name: 'test', path: '', uuid: '1' }
   const items: SectionItem[] = [
-    { name: 'test', path: '', uuid: '1' },
-    { name: 'test2', path: '', uuid: '2' },
-    { name: 'testWithChildren', path: '', uuid: '3' },
-    { name: 'test_child', path: '/testWithChildren', uuid: '4' },
+    { label: 'test', path: '', uuid: '1' },
+    { label: 'test2', path: '', uuid: '2' },
+    { label: 'testWithChildren', path: '', uuid: '3' },
+    { label: 'test_child', path: '/testWithChildren', uuid: '4' },
   ]
 
   const preloadedState = {
@@ -66,7 +66,7 @@ describe('today view', () => {
     expect(screen.queryByText(/test_child/i)).not.toBeInTheDocument()
   })
   it('lets the user rate any section without children', async () => {
-    render(<SubSectionListItem item={item} />)
+    render(<SectionListItem item={item} />)
     const buttons = screen.queryAllByRole('button')
     expect(buttons.length).toBe(4)
     expect(buttons[1]).not.toHaveClass('border-accent')

@@ -5,10 +5,12 @@ import { dateReducer } from './date'
 import { noteReducer } from './note'
 import { ratingReducer } from './ratings'
 import { sectionReducer } from './sections'
+import { uiReducer } from './ui'
 
 const getPersistedState = () => {
   try {
     const raw = localStorage.getItem('state') || ''
+    if (process.env.NODE_ENV === 'development') return undefined
     return JSON.parse(raw)
   } catch {
     return undefined
@@ -25,6 +27,7 @@ export const store = configureStore({
     ratings: ratingReducer,
     date: dateReducer,
     note: noteReducer,
+    ui: uiReducer,
   },
   preloadedState: { ...getPersistedState(), date: Date.now() },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),

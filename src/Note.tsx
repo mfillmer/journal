@@ -16,6 +16,7 @@ export const Note = () => {
         width: '100%',
         marginY: 8,
       }}
+      minRows={4}
       label='Notiz'
       multiline={true}
       value={content}

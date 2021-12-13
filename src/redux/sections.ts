@@ -3,7 +3,7 @@ import { v4 } from 'uuid'
 
 export interface SectionItem {
   uuid: string
-  name: string
+  label: string
   path: string
 }
 
@@ -18,13 +18,14 @@ const sectionSlice = createSlice({
   name: 'sections',
   initialState,
   reducers: {
-    addSection: (state, action: PayloadAction<string>) => {
-      const path = state.path
-      const uuid = v4()
-      state.items[uuid] = { path, uuid, name: action.payload }
-    },
     setPath: (state, action: PayloadAction<string>) => {
       state.path = action.payload
+    },
+    addSection: (state, action: PayloadAction<string>) => {
+      const uuid = v4()
+      const path = state.path
+      const label = action.payload
+      state.items[uuid] = { uuid, path, label }
     },
   },
 })

@@ -1,27 +1,16 @@
-import { Box } from '@mui/system'
+import { Container } from '@mui/material'
 import React from 'react'
-import './App.css'
-import { DateView } from './DateView'
-import { Note } from './Note'
-import { SectionView } from './SectionView'
-import '@material-tailwind/react/tailwind.css'
+import { IntroScreen } from './IntroScreen'
+import { Journal } from './Journal'
+import { useSections } from './Section.util'
 
-const App = () => (
-  <Box
-    sx={{
-      padding: 1,
-      marginTop: 2,
-      marginX: 'auto',
-      maxWidth: 600,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    }}
-  >
-    <DateView />
-    <SectionView />
-    <Note />
-  </Box>
-)
+const App = () => {
+  const sections = useSections()
+  return (
+    <Container maxWidth='sm' sx={{ padding: 2 }}>
+      {!!sections.length ? <Journal /> : <IntroScreen />}
+    </Container>
+  )
+}
 
 export default App

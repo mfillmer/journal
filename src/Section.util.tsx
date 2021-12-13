@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { addSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
+import { setItem } from './redux/ui'
 
 export const useSetPath = () => {
   const dispatch = useDispatch()
@@ -8,6 +9,11 @@ export const useSetPath = () => {
     dispatch(setPath(val))
   }
   return fn
+}
+
+export const useSetItem = () => {
+  const dispatch = useDispatch()
+  return (item: SectionItem | undefined) => dispatch(setItem(item))
 }
 
 export const usePath = () => {
@@ -21,13 +27,25 @@ export const useHeading = () => {
   return heading
 }
 
-export const useItems = (): SectionItem[] => {
+export const useSections = (): SectionItem[] => {
   const path = usePath()
   const items = useAppSelector((state) =>
     Object.values(state.sections.items)?.filter((s) => s.path === path)
   )
-
   return items
+}
+
+export const useHasChildren = (section: SectionItem): boolean => {
+  const path = `${section.path}/${section.label}`
+  const items = useAppSelector((state) =>
+    Object.values(state.sections.items).filter((s) => s.path === path)
+  )
+  return !!items.length
+}
+
+export const useCurrentItem = (): SectionItem | undefined => {
+  const item = useAppSelector((state) => state.ui.currentItem)
+  return item
 }
 
 export const useGoUp = () => {
@@ -41,9 +59,9 @@ export const useGoUp = () => {
   return goUp
 }
 
-export const useAdd = (value: string) => {
+export const useAddSection = () => {
   const dispatch = useDispatch()
-
-  const add = () => value && dispatch(addSection(value))
-  return add
+  return (label: string) => {
+    dispatch(addSection(label))
+  }
 }
