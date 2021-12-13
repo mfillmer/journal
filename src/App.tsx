@@ -5,9 +5,7 @@ import { Journal } from './Journal'
 import { useAppSelector } from './redux/store'
 
 const App = () => {
-  const sections = useAppSelector((state) =>
-    Object.values(state.sections.items)
-  )
+  const sections = useAppSelector((state) => Object.values(state.sections))
   const isUsed = sections.length > 0
   return (
     <Container maxWidth='sm' sx={{ padding: 2 }}>

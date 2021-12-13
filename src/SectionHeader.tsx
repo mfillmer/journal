@@ -10,7 +10,7 @@ export const SectionHeader = () => {
 
   if (!heading) return null
   return (
-    <Stack spacing={2} direction='row' onClick={goUp}>
+    <Stack spacing={2} direction='row' alignItems='center' onClick={goUp}>
       <IconButton>
         <ArrowBackIos />
       </IconButton>

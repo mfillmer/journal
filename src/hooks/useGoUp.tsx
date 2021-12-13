@@ -1,13 +1,8 @@
-import { usePath } from './usePath'
-import { useSetPath } from './useSetPath'
+import { useNavigate } from 'react-router-dom'
+import { useCurrentSection } from './useCurrentSection'
 
 export const useGoUp = () => {
-  const path = usePath()
-  const setPath = useSetPath()
-  const goUp = () => {
-    const newPath = path.split('/')
-    newPath.pop()
-    setPath(newPath.reverse().join('/'))
-  }
-  return goUp
+  const parent = useCurrentSection()?.parent || ''
+  const navigate = useNavigate()
+  return () => navigate(`/${parent}`)
 }

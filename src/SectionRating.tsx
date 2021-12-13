@@ -2,21 +2,21 @@ import { Close, Settings } from '@mui/icons-material'
 import { Button, Drawer, IconButton, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useCurrentItem } from './hooks/useCurrentItem'
 import { useSetItem } from './hooks/useSetItem'
-import { useSetPath } from './hooks/useSetPath'
 
 import { SectionCommentInput } from './SectionCommentInput'
 import { SectionRatingInput } from './SectionRatingInput'
 
 export const SectionRating: FC = () => {
-  const item = useCurrentItem()
+  const navigate = useNavigate()
   const setItem = useSetItem()
-  const setPath = useSetPath()
+  const item = useCurrentItem()
   const close = () => setItem(undefined)
   const stepInto = () => {
     if (item) {
-      setPath(`${item.path}/${item.label}`)
+      navigate(`/${item.uuid}`)
       close()
     }
   }

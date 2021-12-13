@@ -1,11 +1,9 @@
 import { SectionItem } from '../redux/sections'
 import { useAppSelector } from '../redux/store'
-import { usePath } from './usePath'
+import { useCurrentSection } from './useCurrentSection'
 
 export const useSections = (): SectionItem[] => {
-  const path = usePath()
-  const items = useAppSelector((state) =>
-    Object.values(state.sections.items)?.filter((s) => s.path === path)
-  )
-  return items
+  const currentUuid = useCurrentSection()?.uuid || ''
+  const items = useAppSelector((state) => Object.values(state.sections))
+  return items.filter((s) => s.parent === currentUuid)
 }

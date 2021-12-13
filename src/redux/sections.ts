@@ -4,31 +4,30 @@ import { v4 } from 'uuid'
 export interface SectionItem {
   uuid: string
   label: string
-  path: string
+  parent: string
 }
 
 interface State {
-  items: { [key: string]: SectionItem }
-  path: string
+  [key: string]: SectionItem
 }
 
-const initialState = { items: {}, path: '' } as State
+const initialState = {} as State
 
 const sectionSlice = createSlice({
   name: 'sections',
   initialState,
   reducers: {
-    setPath: (state, action: PayloadAction<string>) => {
-      state.path = action.payload
-    },
-    addSection: (state, action: PayloadAction<string>) => {
+    addSection: (
+      state,
+      action: PayloadAction<{ label: string; parent?: string }>
+    ) => {
       const uuid = v4()
-      const path = state.path
-      const label = action.payload
-      state.items[uuid] = { uuid, path, label }
+      const parent = action.payload.parent || ''
+      const label = action.payload.label
+      state[uuid] = { uuid, parent, label }
     },
   },
 })
 
 export const sectionReducer = sectionSlice.reducer
-export const { addSection, setPath } = sectionSlice.actions
+export const { addSection } = sectionSlice.actions
