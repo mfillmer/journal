@@ -1,4 +1,4 @@
-import { ArrowForwardIos, Edit } from '@mui/icons-material'
+import { ArrowForwardIos } from '@mui/icons-material'
 import { IconButton, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
@@ -20,7 +20,9 @@ export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
       <Typography noWrap variant='h2' sx={{ flex: 1 }}>
         {item.label}
       </Typography>
-      <IconButton>{hasChildren ? <ArrowForwardIos /> : <Edit />}</IconButton>
+      <IconButton>
+        <ArrowForwardIos />
+      </IconButton>
     </Box>
   )
 }

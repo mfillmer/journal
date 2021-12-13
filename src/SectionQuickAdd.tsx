@@ -33,7 +33,7 @@ export const SectionQuickAdd = () => {
           onChange={(e) => setValue(e.target.value)}
           placeholder='Bereich hinzufügen'
         />
-        <IconButton type='submit'>
+        <IconButton>
           <Add />
         </IconButton>
       </Box>
