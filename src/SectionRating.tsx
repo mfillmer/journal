@@ -12,7 +12,7 @@ export const SectionRating: FC = () => {
   const onClick = () => setItem(undefined)
   return (
     <Drawer
-      variant='persistent'
+      variant='temporary'
       sx={{ borderTopLeftRadius: 3, borderTopRightRadius: 3 }}
       anchor='bottom'
       open={!!item}>
