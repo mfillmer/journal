@@ -1,8 +1,6 @@
 import { ArrowForwardIos } from '@mui/icons-material'
 import { IconButton, Stack, Typography } from '@mui/material'
-import { Box } from '@mui/system'
 import React, { FC } from 'react'
-import { useSectionRating } from './Rating.utils'
 import { SectionItem } from './redux/sections'
 import { useHasChildren, usePath, useSetItem, useSetPath } from './Section.util'
 import { useRatingColor } from './useRatingColor'
