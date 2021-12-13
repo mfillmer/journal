@@ -7,7 +7,7 @@ export const SectionList = () => {
   const sections = useSections()
 
   return (
-    <Stack>
+    <Stack marginBottom={4}>
       {sections.map((item, index) => (
         <SectionListItem key={index} item={item} />
       ))}

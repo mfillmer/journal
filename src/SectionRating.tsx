@@ -1,16 +1,22 @@
-import { Close } from '@mui/icons-material'
+import { Close, Settings } from '@mui/icons-material'
 import { Button, Drawer, IconButton, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
 import { useCurrentItem } from './hooks/useCurrentItem'
 import { useSetItem } from './hooks/useSetItem'
+import { useSetPath } from './hooks/useSetPath'
+
 import { SectionCommentInput } from './SectionCommentInput'
 import { SectionRatingInput } from './SectionRatingInput'
 
 export const SectionRating: FC = () => {
   const item = useCurrentItem()
   const setItem = useSetItem()
-  const onClick = () => setItem(undefined)
+  const setPath = useSetPath()
+  const close = () => setItem(undefined)
+  const stepInto = () => {
+    if (item) setPath(`${item.path}/${item.label}`)
+  }
   return (
     <Drawer
       variant='temporary'
@@ -33,16 +39,19 @@ export const SectionRating: FC = () => {
           width='full'
           alignItems='center'
           justifyContent='space-between'>
+          <IconButton onClick={stepInto}>
+            <Settings />
+          </IconButton>
           <Typography variant='h3' title={item?.label} noWrap>
             {item?.label}
           </Typography>
-          <IconButton onClick={onClick}>
+          <IconButton onClick={close}>
             <Close />
           </IconButton>
         </Stack>
         <SectionRatingInput uuid={item?.uuid || ''} />
         <SectionCommentInput uuid={item?.uuid || ''} />
-        <Button variant='outlined' fullWidth onClick={onClick}>
+        <Button variant='outlined' fullWidth onClick={close}>
           Fertig
         </Button>
       </Box>

@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import logger from 'redux-logger'
 import { dateReducer } from './date'
-import { noteReducer } from './note'
 import { ratingReducer } from './ratings'
 import { sectionReducer } from './sections'
 import { uiReducer } from './ui'
@@ -26,7 +25,6 @@ export const store = configureStore({
     sections: sectionReducer,
     ratings: ratingReducer,
     date: dateReducer,
-    note: noteReducer,
     ui: uiReducer,
   },
   preloadedState: { ...getPersistedState(), date: Date.now() },
