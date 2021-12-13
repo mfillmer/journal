@@ -15,7 +15,10 @@ export const SectionRating: FC = () => {
   const setPath = useSetPath()
   const close = () => setItem(undefined)
   const stepInto = () => {
-    if (item) setPath(`${item.path}/${item.label}`)
+    if (item) {
+      setPath(`${item.path}/${item.label}`)
+      close()
+    }
   }
   return (
     <Drawer
