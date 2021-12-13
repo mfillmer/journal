@@ -1,7 +1,6 @@
-import { usePath } from './usePath'
+import { useCurrentSection } from './useCurrentSection'
 
 export const useHeading = () => {
-  const path = usePath()
-  const heading = path?.split('/').pop()
-  return heading
+  const label = useCurrentSection()?.label
+  return label || ''
 }

@@ -2,9 +2,9 @@ import { SectionItem } from '../redux/sections'
 import { useAppSelector } from '../redux/store'
 
 export const useHasChildren = (section: SectionItem): boolean => {
-  const path = `${section.path}/${section.label}`
-  const items = useAppSelector((state) =>
-    Object.values(state.sections.items).filter((s) => s.path === path)
+  const child = useAppSelector((state) =>
+    Object.values(state.sections).find((s) => s.parent === section.uuid)
   )
-  return !!items.length
+
+  return !!child
 }
