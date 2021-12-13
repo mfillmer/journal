@@ -1,10 +1,13 @@
 import { ArrowForwardIos } from '@mui/icons-material'
 import { IconButton, Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { useSectionComment } from './Rating.utils'
+import { useSectionComment } from './hooks/useSectionComment'
 import { SectionItem } from './redux/sections'
-import { useHasChildren, usePath, useSetItem, useSetPath } from './Section.util'
-import { useRatingColor } from './useRatingColor'
+import { useHasChildren } from './hooks/useHasChildren'
+import { usePath } from './hooks/usePath'
+import { useSetItem } from './hooks/useSetItem'
+import { useSetPath } from './hooks/useSetPath'
+import { useRatingColor } from './hooks/useRatingColor'
 
 export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const path = usePath()

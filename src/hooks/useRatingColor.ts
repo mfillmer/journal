@@ -1,4 +1,4 @@
-import { useSectionRating } from './Rating.utils'
+import { useSectionRating } from './useSectionRating'
 
 export const ratingColors = ['#BAF3B4', '#97C8DB', '#DFB0FF', '#FCBBB1']
 export const useRatingColor = (sectionUuid: string) => {

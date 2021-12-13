@@ -1,7 +1,7 @@
 import { ToggleButton, ToggleButtonGroup, Typography } from '@mui/material'
 import React, { FC } from 'react'
-import { useSectionRating } from './Rating.utils'
-import { ratingColors } from './useRatingColor'
+import { useSectionRating } from './hooks/useSectionRating'
+import { ratingColors } from './hooks/useRatingColor'
 
 interface props {
   uuid: string

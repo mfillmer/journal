@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { goBack, goForward } from './redux/date'
-import { useAppSelector } from './redux/store'
+import { goBack, goForward } from '../redux/date'
+import { useAppSelector } from '../redux/store'
 
 export const useDate = () => {
   const dispatch = useDispatch()

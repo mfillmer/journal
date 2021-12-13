@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useDate } from './DateView.utils'
+import { useDate } from './hooks/useDate'
 import { setNote } from './redux/note'
 import { useAppSelector } from './redux/store'
 

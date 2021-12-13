@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
 import React from 'react'
-import { useSections } from './Section.util'
+import { useSections } from './hooks/useSections'
 import { SectionListItem } from './SectionListItem'
 
 export const SectionList = () => {

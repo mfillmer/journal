@@ -2,7 +2,7 @@ import { Container } from '@mui/material'
 import React from 'react'
 import { IntroScreen } from './IntroScreen'
 import { Journal } from './Journal'
-import { useSections } from './Section.util'
+import { useSections } from './hooks/useSections'
 
 const App = () => {
   const sections = useSections()
