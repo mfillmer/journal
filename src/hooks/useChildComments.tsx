@@ -1,4 +1,3 @@
-import { useAppSelector } from '../redux/store'
 import { useChildrenRatings } from './useChildrenRatings'
 
 export const useChildComments = (uuid: string) => {
