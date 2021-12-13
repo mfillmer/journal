@@ -6,7 +6,7 @@ interface props {
   uuid: string
 }
 export const SectionCommentInput: FC<props> = ({ uuid }) => {
-  const { comment, setComment } = useSectionComment(uuid)
+  const { comments, setComment } = useSectionComment(uuid)
   return (
     <TextField
       sx={{
@@ -18,7 +18,7 @@ export const SectionCommentInput: FC<props> = ({ uuid }) => {
       multiline={true}
       variant='outlined'
       size='small'
-      value={comment}
+      value={comments[0]}
       onChange={(e) => setComment(e.currentTarget.value)}
     />
   )

@@ -10,7 +10,7 @@ import { SectionItem } from './redux/sections'
 
 export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const setItem = useSetItem()
-  const { comment } = useSectionComment(item.uuid)
+  const { comments } = useSectionComment(item.uuid)
   const bgColor = useRatingColor(item.uuid)
   const hasChildren = useHasChildren(item)
   const navigate = useNavigate()
@@ -28,20 +28,24 @@ export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
       onClick={onClick}>
       <Typography
         variant='h2'
-        noWrap={!comment}
+        noWrap={!comments.length}
         marginRight={1}
         sx={{
           flex: 1,
           wordBreak: 'break-all',
           transition: 'all',
-          fontSize: !comment ? undefined : '1rem',
+          fontSize: !comments.length ? undefined : '1rem',
         }}>
         {item.label}
       </Typography>
-      {comment && (
-        <Typography variant='body1' flex='5' sx={{ wordBreak: 'break-all' }}>
-          {comment}
-        </Typography>
+      {!!comments.length && (
+        <Stack flex='5'>
+          {comments.map((c, i) => (
+            <Typography variant='body1' key={i} sx={{ wordBreak: 'break-all' }}>
+              {c}
+            </Typography>
+          ))}
+        </Stack>
       )}
       <IconButton>
         <ArrowForwardIos />
