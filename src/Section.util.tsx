@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { SectionItem, setPath } from './redux/sections'
+import { addSection, SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
 import { setItem } from './redux/ui'
 
@@ -57,4 +57,11 @@ export const useGoUp = () => {
     setPath(newPath.reverse().join('/'))
   }
   return goUp
+}
+
+export const useAddSection = () => {
+  const dispatch = useDispatch()
+  return (label: string) => {
+    dispatch(addSection(label))
+  }
 }
