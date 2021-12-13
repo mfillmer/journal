@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { upsertSection, SectionItem, setPath } from './redux/sections'
+import { SectionItem, setPath } from './redux/sections'
 import { useAppSelector } from './redux/store'
 import { setItem } from './redux/ui'
 
@@ -57,17 +57,4 @@ export const useGoUp = () => {
     setPath(newPath.reverse().join('/'))
   }
   return goUp
-}
-
-export const useSubmitSection = (
-  label?: string,
-  uuid?: string,
-  isChild: boolean = false
-) => {
-  const dispatch = useDispatch()
-
-  const submit = () => {
-    if (!!label) dispatch(upsertSection({ label, uuid, isChild }))
-  }
-  return submit
 }
