@@ -1,11 +1,10 @@
-import { Typography } from '@mui/material'
-import { Box } from '@mui/system'
+import { Stack, Typography } from '@mui/material'
 import React from 'react'
 import { SectionQuickAdd } from './SectionQuickAdd'
 
 export const IntroScreen = () => {
   return (
-    <Box display='flex' flexDirection='column' alignItems='center'>
+    <Stack alignItems='center'>
       <Typography variant='h1' textAlign='center' marginY={4}>
         Das ist dein Journal
       </Typography>
@@ -34,6 +33,6 @@ export const IntroScreen = () => {
         Starte jetzt
       </Typography>
       <SectionQuickAdd />
-    </Box>
+    </Stack>
   )
 }

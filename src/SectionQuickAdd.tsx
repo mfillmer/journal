@@ -17,7 +17,9 @@ export const SectionQuickAdd = () => {
     ref.current?.firstChild?.focus()
   }
   return (
-    <form onSubmit={submit}>
+    <form
+      onSubmit={submit}
+      style={{ display: 'flex', justifyContent: 'center' }}>
       <Box
         display='flex'
         padding='1px 2px 0px'
