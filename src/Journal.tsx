@@ -1,18 +1,19 @@
+import { Stack } from '@mui/material'
 import React from 'react'
-import { SectionEditorToggle } from './SectionEditorToggle'
 import { DateView } from './DateView'
 import { Note } from './Note'
 import { SectionHeader } from './SectionHeader'
-import { SectionRating } from './SectionRating'
 import { SectionList } from './SectionList'
+import { SectionQuickAdd } from './SectionQuickAdd'
+import { SectionRating } from './SectionRating'
 
 export const Journal = () => (
-  <>
+  <Stack alignItems='stretch'>
     <DateView />
     <SectionHeader />
-    <SectionEditorToggle />
     <SectionList />
     <SectionRating />
     <Note />
-  </>
+    <SectionQuickAdd />
+  </Stack>
 )
