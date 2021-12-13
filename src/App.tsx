@@ -1,22 +1,17 @@
 import { Container } from '@mui/material'
 import React from 'react'
-import { SectionEditorToggle } from './SectionEditorToggle'
 import './App.css'
-import { DateView } from './DateView'
-import { Note } from './Note'
-import { SectionHeader } from './SectionHeader'
-import { SectionRating } from './SectionRating'
-import { SectionList } from './SectionList'
+import { IntroScreen } from './IntroScreen'
+import { Journal } from './Journal'
+import { useSections } from './Section.util'
 
-const App = () => (
-  <Container maxWidth='sm' sx={{ padding: 2 }}>
-    <DateView />
-    <SectionHeader />
-    <SectionEditorToggle />
-    <SectionList />
-    <SectionRating />
-    <Note />
-  </Container>
-)
+const App = () => {
+  const sections = useSections()
+  return (
+    <Container maxWidth='sm' sx={{ padding: 2 }}>
+      {!!sections.length ? <Journal /> : <IntroScreen />}
+    </Container>
+  )
+}
 
 export default App

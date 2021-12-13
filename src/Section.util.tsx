@@ -27,7 +27,7 @@ export const useHeading = () => {
   return heading
 }
 
-export const useItems = (): SectionItem[] => {
+export const useSections = (): SectionItem[] => {
   const path = usePath()
   const items = useAppSelector((state) =>
     Object.values(state.sections.items)?.filter((s) => s.path === path)

@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@mui/material'
 import React, { FC, useState } from 'react'
-import { useItems, useSubmitSection } from './Section.util'
+import { useSections, useSubmitSection } from './Section.util'
 
 interface props {
   open?: boolean
@@ -27,7 +27,7 @@ export const SectionEditor: FC<props> = ({
   const [value, setValue] = useState<string>('')
   const [uuid, setUuid] = useState<string>('')
   const [isChild, setIsChild] = useState(false)
-  const items = useItems()
+  const sections = useSections()
   const submit = useSubmitSection(value, uuid, isChild)
 
   const onSubmit = () => {
@@ -45,11 +45,11 @@ export const SectionEditor: FC<props> = ({
           <InputLabel id='section'>Bereich wählen</InputLabel>
           <Select
             label='Bereich wählen'
-            disabled={!items.length}
+            disabled={!sections.length}
             value={uuid}
             onChange={(e) => setUuid(e.target.value)}
             labelId='section'>
-            {items.map((i) => (
+            {sections.map((i) => (
               <MenuItem value={i.uuid}>{i.label}</MenuItem>
             ))}
           </Select>

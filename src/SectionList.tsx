@@ -1,14 +1,14 @@
 import { Stack } from '@mui/material'
 import React from 'react'
-import { useItems } from './Section.util'
+import { useSections } from './Section.util'
 import { SectionListItem } from './SectionListItem'
 
 export const SectionList = () => {
-  const items = useItems()
+  const sections = useSections()
 
   return (
     <Stack>
-      {items.map((item, index) => (
+      {sections.map((item, index) => (
         <SectionListItem key={index} item={item} />
       ))}
     </Stack>
