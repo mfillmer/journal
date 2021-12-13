@@ -1,5 +1,5 @@
 import { Close } from '@mui/icons-material'
-import { Drawer, IconButton, Stack, Typography, Button } from '@mui/material'
+import { Button, Drawer, IconButton, Stack, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FC } from 'react'
 import { useCurrentItem, useSetItem } from './Section.util'
@@ -16,8 +16,22 @@ export const SectionRating: FC = () => {
       sx={{ borderTopLeftRadius: 3, borderTopRightRadius: 3 }}
       anchor='bottom'
       open={!!item}>
-      <Box sx={{ padding: 2 }}>
-        <Stack direction='row'>
+      <Box
+        padding={2}
+        width='600px'
+        maxWidth='100%'
+        marginX='auto'
+        boxSizing='border-box'
+        minHeight='66vh'
+        display='flex'
+        flexDirection='column'
+        justifyContent='space-evenly'>
+        <Stack
+          direction='row'
+          marginY={4}
+          width='full'
+          alignItems='center'
+          justifyContent='space-between'>
           <Typography variant='h3' title={item?.label} noWrap>
             {item?.label}
           </Typography>
