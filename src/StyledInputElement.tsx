@@ -1,6 +1,8 @@
+import { InputUnstyled, InputUnstyledProps } from '@mui/material'
 import { styled } from '@mui/system'
+import React from 'react'
 
-export const StyledInputElement = styled('input')`
+const StyledInputElement = styled('input')`
   min-width: 200px;
   font-size: 1rem;
   font-family: IBM Plex Sans, sans-serif;
@@ -23,3 +25,16 @@ export const StyledInputElement = styled('input')`
     outline: none;
   }
 `
+
+export const CustomInput = React.forwardRef(function CustomInput(
+  props: InputUnstyledProps,
+  ref: React.ForwardedRef<HTMLDivElement>
+) {
+  return (
+    <InputUnstyled
+      components={{ Input: StyledInputElement }}
+      {...props}
+      ref={ref}
+    />
+  )
+})

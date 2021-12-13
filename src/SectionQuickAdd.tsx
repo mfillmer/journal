@@ -1,36 +1,42 @@
 import { Add } from '@mui/icons-material'
-import { IconButton, InputUnstyled } from '@mui/material'
+import { IconButton } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { useState } from 'react'
+import React, { FormEvent, useRef, useState } from 'react'
 import { useAddSection } from './Section.util'
-import { StyledInputElement } from './StyledInputElement'
+import { CustomInput } from './StyledInputElement'
 
 export const SectionQuickAdd = () => {
+  const ref = useRef<any>(null)
   const [value, setValue] = useState('')
   const addSection = useAddSection()
-  const submit = () => {
+  const submit = (e: FormEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     if (!!value) addSection(value)
+    setValue('')
+    ref.current?.firstChild?.focus()
   }
   return (
-    <Box
-      display='flex'
-      padding='1px 2px 0px'
-      width='300px'
-      alignItems='center'
-      justifyContent='space-between'
-      overflow='hidden'
-      borderRadius='20px'
-      bgcolor='rgb(243, 246, 249)'>
-      <InputUnstyled
-        components={{ Input: StyledInputElement }}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder='Bereich hinzufügen'
-      />
-
-      <IconButton onClick={submit}>
-        <Add />
-      </IconButton>
-    </Box>
+    <form onSubmit={submit}>
+      <Box
+        display='flex'
+        padding='1px 2px 0px'
+        width='300px'
+        alignItems='center'
+        justifyContent='space-between'
+        overflow='hidden'
+        borderRadius='20px'
+        bgcolor='rgb(243, 246, 249)'>
+        <CustomInput
+          ref={ref}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder='Bereich hinzufügen'
+        />
+        <IconButton type='submit'>
+          <Add />
+        </IconButton>
+      </Box>
+    </form>
   )
 }
