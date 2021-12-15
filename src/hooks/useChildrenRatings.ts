@@ -1,4 +1,5 @@
 import { getRatingId } from '../redux/getRatingId'
+import {} from '../'
 import { useAppSelector } from '../redux/store'
 import { useDate } from './useDate'
 
@@ -10,5 +11,10 @@ export const useChildrenRatings = (uuid: string) => {
     Object.values(state.sections)
   ).filter((s) => s.parent === uuid)
 
-  return children.map((c) => getRatingId(date, c.uuid)).map((id) => ratings[id])
+  const items = children
+    .map((c) => getRatingId(date, c.uuid))
+    .map((id) => ratings[id])
+    .filter((r) => !!r)
+
+  return items
 }

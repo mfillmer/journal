@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getRatingId } from './getRatingId'
 
-interface Rating {
+export interface Rating {
   date: string
   value: number
   comment: string
