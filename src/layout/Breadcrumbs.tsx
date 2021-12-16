@@ -2,7 +2,7 @@ import { Breadcrumbs as MuiBreadcrumbs } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { useBreadcrumbs } from './hooks/useBreadcrumbs'
+import { useBreadcrumbs } from '../hooks/useBreadcrumbs'
 
 export const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs({ includeCurrent: false })

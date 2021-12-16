@@ -4,7 +4,7 @@ import {
 } from '@mui/icons-material'
 import { Button, ButtonGroup } from '@mui/material'
 import React from 'react'
-import { useDate } from './hooks/useDate'
+import { useDate } from '../hooks/useDate'
 
 export const DateView = () => {
   const { dateString, goBack, goForward } = useDate()

@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material'
 import React from 'react'
-import { SectionQuickAdd } from './section/SectionQuickAdd'
+import { SectionQuickAdd } from '../section/SectionQuickAdd'
 
 export const IntroScreen = () => {
   return (

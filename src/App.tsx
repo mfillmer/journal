@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import React from 'react'
-import { IntroScreen } from './IntroScreen'
-import { Journal } from './Journal'
+import { IntroScreen } from './layout/IntroScreen'
+import { Journal } from './layout/Journal'
 import { useAppSelector } from './redux/store'
 
 const App = () => {
