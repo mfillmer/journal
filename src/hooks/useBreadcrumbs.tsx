@@ -1,6 +1,6 @@
-import { useCurrentSection } from './hooks/useCurrentSection'
-import { SectionItem } from './redux/sections'
-import { useAppSelector } from './redux/store'
+import { useCurrentSection } from './useCurrentSection'
+import { SectionItem } from '../redux/sections'
+import { useAppSelector } from '../redux/store'
 
 export const useBreadcrumbs = ({
   depth = 3,

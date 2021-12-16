@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material'
 import React, { FC } from 'react'
-import { useSectionComment } from './hooks/useSectionComment'
+import { useSectionComment } from '../hooks/useSectionComment'
 
 interface props {
   uuid: string

@@ -2,11 +2,11 @@ import { ArrowForwardIos } from '@mui/icons-material'
 import { IconButton, Stack, Typography } from '@mui/material'
 import React, { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useHasChildren } from './hooks/useHasChildren'
-import { useRatingColor } from './hooks/useRatingColor'
-import { useSectionComment } from './hooks/useSectionComment'
-import { useSetItem } from './hooks/useSetItem'
-import { SectionItem } from './redux/sections'
+import { useHasChildren } from '../hooks/useHasChildren'
+import { useRatingColor } from '../hooks/useRatingColor'
+import { useSectionComment } from '../hooks/useSectionComment'
+import { useSetItem } from '../hooks/useSetItem'
+import { SectionItem } from '../redux/sections'
 
 export const SectionListItem: FC<{ item: SectionItem }> = ({ item }) => {
   const setItem = useSetItem()

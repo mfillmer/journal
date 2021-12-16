@@ -2,7 +2,7 @@ import { Add } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { FormEvent, useRef, useState } from 'react'
-import { useAddSection } from './hooks/useAddSection'
+import { useAddSection } from '../hooks/useAddSection'
 import { CustomInput } from './StyledInputElement'
 
 export const SectionQuickAdd = () => {

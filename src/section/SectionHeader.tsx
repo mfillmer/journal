@@ -1,8 +1,8 @@
+import React from 'react'
 import { ArrowBackIos } from '@mui/icons-material'
 import { IconButton, Stack, Typography } from '@mui/material'
-import React from 'react'
-import { useGoUp } from './hooks/useGoUp'
-import { useHeading } from './hooks/useHeading'
+import { useGoUp } from '../hooks/useGoUp'
+import { useHeading } from '../hooks/useHeading'
 
 export const SectionHeader = () => {
   const heading = useHeading()
