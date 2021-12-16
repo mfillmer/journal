@@ -1,5 +1,5 @@
 let CACHE_NAME = 'journal-cache-v1'
-const urlsToCache = ['/journal/', '/journal/index.html']
+const urlsToCache = ['./journal/', './journal/index.html']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
