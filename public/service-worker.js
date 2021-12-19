@@ -1,5 +1,5 @@
 let CACHE_NAME = 'journal-cache-v1'
-const urlsToCache = ['/', '/index.html']
+const urlsToCache = ['./journal/', './journal/index.html']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -8,6 +8,7 @@ self.addEventListener('install', (event) => {
       return cache.addAll(urlsToCache)
     })
   )
+  self.skipWaiting()
 })
 
 self.addEventListener('fetch', (event) => {
@@ -19,14 +20,4 @@ self.addEventListener('fetch', (event) => {
       return fetch(event.request)
     })
   )
-})
-
-self.addEventListener('install', () => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('opened cache')
-      return cache.addAll(urlsToCache)
-    })
-  )
-  self.skipWaiting()
 })
