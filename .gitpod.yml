@@ -17,7 +17,3 @@ github:
 
 tasks:
   - init: yarn
-
-workspaceLocation: /home/gitpod
-
-checkoutLocation: /home/gitpod
